@@ -1,12 +1,12 @@
 /*
-CHALLENGE
-1. Convert our consts into two objects called 
-"monster" and "hero".
-2. Update the renderCharacter() function so that it accepts 
-a single object "data" as its parameter instead of five string/numbers, 
-reducing the number of arguments to pass in from five to one.
-3. Update the template now each variable is coming from "data".
-4. Update the function call.
+Challenge
+1. Create a function called getDiceRollArray that uses a 
+   for loop to return an array of random numbers between 1-6. 
+2  The function should have diceCount as a parameter and the 
+   array it returns should be diceCount length.
+3  For testing purposes, call the function with a diceCount of 
+   3 and log out the result. 
+** check out hint.md for extra help! **
 */
 
 const hero = {
@@ -23,6 +23,15 @@ const monster = {
    avatar: "images/orc.png", 
    health: 10, 
    diceRoll: [2],
+}
+
+
+function getDiceRollArray(diceCount) {
+   let resultsArray = []
+   for (let i=0; i<diceCount; i++) {
+      resultsArray.push(Math.floor(Math.random()*6) + 1)
+   }
+   return resultsArray
 }
 
 
