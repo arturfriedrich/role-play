@@ -1,56 +1,62 @@
+function getDiceRollArray(diceCount) {
+   let newDiceRolls = [];
+   for (let i = 0; i < diceCount; i++) {
+       newDiceRolls.push(Math.floor(Math.random() * 6) + 1);
+   }
+   return newDiceRolls;
+}
+
 /*
-Challenge
-1. Create a function called getDiceRollArray that uses a 
-   for loop to return an array of random numbers between 1-6. 
-2  The function should have diceCount as a parameter and the 
-   array it returns should be diceCount length.
-3  For testing purposes, call the function with a diceCount of 
-   3 and log out the result. 
-** check out hint.md for extra help! **
+Challenge 
+1. Create a function called getDiceHtml. 
+2. getDiceHtml should map over the array of dice rolls 
+  returned from getDiceRollArray to generate the html 
+  we need to render our dice with random values. This is 
+  the HTML: `<div class="dice">DICE VALUE HERE</div>`
+3. Think about the parameters and arguments!
+4. Down in renderCharacter(), set diceHtml equals to our 
+  new getDiceHtml function. Remember to give it the argument
+  it needs. 
+5. Delete any code we no longer need.
+**hint.md for help**
 */
 
+function getDiceHtml(diceCount){
+   return getDiceRollArray(diceCount).map(function(num){
+      return `<div class="dice">${num}</div>`
+   }).join('')
+}
+
+
 const hero = {
-   elementId: "hero", 
-   name: "Wizard", 
-   avatar: "images/wizard.png", 
-   health: 60, 
-   diceRoll: [3, 1, 4],
+   elementId: "hero",
+   name: "Wizard",
+   avatar: "images/wizard.png",
+   health: 60,
+   diceCount: 3
 }
 
 const monster = {
-   elementId: "monster", 
-   name: "Orc", 
-   avatar: "images/orc.png", 
-   health: 10, 
-   diceRoll: [2],
+   elementId: "monster",
+   name: "Orc",
+   avatar: "images/orc.png",
+   health: 10,
+   diceCount: 1
 }
-
-
-function getDiceRollArray(diceCount) {
-   let resultsArray = []
-   for (let i=0; i<diceCount; i++) {
-      resultsArray.push(Math.floor(Math.random()*6) + 1)
-   }
-   return resultsArray
-}
-
 
 function renderCharacter(data) {
-   const {elementId, name, avatar, health, diceRoll} = data
+   const { elementId, name, avatar, health, diceCount } = data;
+   const diceHtml = getDiceHtml(diceCount)
 
-   const diceHtml = diceRoll.map((num) => {
-      return `<div class="dice">${num}</div>`
-   })
-    
-    document.getElementById(elementId).innerHTML = 
+   document.getElementById(elementId).innerHTML =
       `<div class="character-card">
-            <h4 class="name"> ${name} </h4>
-            <img class="avatar" src="${avatar}" />
-            <div class="health">health: <b> ${health} </b></div>
-            <div class="dice-container">
-               ${diceHtml.join('')}
-            </div>
-      </div>`   
+         <h4 class="name"> ${name} </h4>
+         <img class="avatar" src="${avatar}" />
+         <div class="health">health: <b> ${health} </b></div>
+         <div class="dice-container">    
+            ${diceHtml}
+         </div>
+      </div>`;
 }
 
 renderCharacter(hero);
