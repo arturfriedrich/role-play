@@ -35,26 +35,23 @@ function Character(data) {
       const { elementId, name, avatar, health, diceCount } = this;
       const diceHtml = this.getDiceHtml(diceCount)
 
-      document.getElementById(elementId).innerHTML =
-         `<div class="character-card">
+      return `
+         <div class="character-card">
             <h4 class="name"> ${name} </h4>
             <img class="avatar" src="${avatar}" />
             <div class="health">health: <b> ${health} </b></div>
             <div class="dice-container">    
                ${diceHtml}
             </div>
-         </div>`;
+         </div>`
    }
 }
 
-/*
-CHALLENGE
-- instead of setting the innerHTML from right here in the contructor,
-make it so that we just return that literal string of HTML
-- This will break the app. Don't worry!
-*/
-
 const wizard = new Character(hero)
 const orc = new Character(monster)
-wizard.getCharacterHtml()
-orc.getCharacterHtml()
+
+function render() {
+   document.getElementById(hero.elementId).innerHTML = wizard.getCharacterHtml()
+   document.getElementById(monster.elementId).innerHTML = orc.getCharacterHtml()
+}
+render()
