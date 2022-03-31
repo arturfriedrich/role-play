@@ -5,9 +5,6 @@ function getDiceRollArray(diceCount) {
    return newDiceRolls
 }
 
-// CHALLENGE 
-// 1. Add this function as a method of our character constructor
-// 2. Make a small change to getCharacterHtml to make the app work again
 
 const hero = {
    elementId: "hero",
@@ -49,6 +46,13 @@ function Character(data) {
          </div>`;
    }
 }
+
+/*
+CHALLENGE
+- instead of setting the innerHTML from right here in the contructor,
+make it so that we just return that literal string of HTML
+- This will break the app. Don't worry!
+*/
 
 const wizard = new Character(hero)
 const orc = new Character(monster)
