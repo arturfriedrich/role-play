@@ -1,5 +1,14 @@
 import {getDiceRollArray, getDicePlaceholderHtml} from "./utils.js"
 
+/*
+Challenge
+1. In the getDiceHtml method, map over currentDiceScore 
+to return this string of html template for each element:
+<div class="dice">${num}</div>`. Save this new array
+to diceArray.
+2. Modify the attack() function in index.js to get our 
+app working again.
+*/
 
 function Character(data) {
     Object.assign(this, data)
@@ -7,8 +16,9 @@ function Character(data) {
     this.diceArray = getDicePlaceholderHtml(this.diceCount)
     
     this.getDiceHtml = function(diceCount) {
-        return getDiceRollArray(diceCount).map(function(num){ 
-            return  `<div class="dice">${num}</div>`
+        this.currentDiceScore = getDiceRollArray(this.diceCount)
+        this.diceArray = this.currentDiceScore.map(function(num) {
+            return `<div class="dice">${num}</div>`
         }).join('')
     }
 
