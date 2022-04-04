@@ -1,19 +1,23 @@
 import {getDiceRollArray, getDicePlaceholderHtml} from "./utils.js"
 
-/*
-Challenge
-1. In the getDiceHtml method, map over currentDiceScore 
-to return this string of html template for each element:
-<div class="dice">${num}</div>`. Save this new array
-to diceArray.
-2. Modify the attack() function in index.js to get our 
-app working again.
+/*CHALLENGE
+1. Think what data we need to pass to our new
+takeDamage method.
+2. Add that data as an argument each time we call
+takeDamage below.
+3. In the takeDamage method, take in the data as a 
+parameter called 'attackScoreArray' and log it out.
+**hint.md for help!** 
 */
 
 function Character(data) {
     Object.assign(this, data)
     
     this.diceArray = getDicePlaceholderHtml(this.diceCount)
+
+    this.takeDamage = function(attackScoreArray) {
+        console.log(attackScoreArray)
+    }
     
     this.getDiceHtml = function(diceCount) {
         this.currentDiceScore = getDiceRollArray(this.diceCount)
