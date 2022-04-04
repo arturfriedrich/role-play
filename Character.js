@@ -18,6 +18,7 @@ function Character(data) {
             return total + current
         })
         this.health -= totalAttackScore
+        if ( this.health <= 0 ) this.health = 0
     }
     
     this.getDiceHtml = function(diceCount) {
