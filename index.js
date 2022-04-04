@@ -13,20 +13,6 @@ function attack() {
 }
 
 function endGame() {
-    /*CHALLENGE
-    1. Create a second const in endGame called endEmoji.
-    2. Figure out how to set it to hold the emoji "🔮" if the 
-    wizard wins, and "☠" if the orc wins. If both characters 
-    are dead use "☠️".
-    3. Finally, take the html template string below render it 
-    to the screen so it replaces everything else when the game 
-    is over.
-    `<div class="end-game">
-            <h2>Game Over</h2>
-            <h3>${endMessage}/h3>
-            <p class="end-emoji">${endEmoji}</p>
-        </div>` 
-    */
    const endMessage = orc.dead && wizard.dead ? "No victors - all creatures are dead" 
         : wizard.health > 0 ? "The Wizard Wins"
         : "The Orc is Victorious"
