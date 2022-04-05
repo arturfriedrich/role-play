@@ -5,14 +5,11 @@ let monstersArray = ["orc", "demon", "goblin"]
 
 /*
 Challenge
-1. Make it so getNewMonster returns a new instance of Character. Think
-what argument you should be passing. If there are no more monsters in the 
-array, getNewMonster should return an empty object {}.
-2. Down near the bottom of the file, set a new variable "monster" equal 
-to our new function getNewMonster.
-3. Delete any code we no longer need.
-- The app will still be broken - don't worry for now!
-**hint.md for help!!**
+1. Change the attack function so that when a monster dies, 
+the next monster replaces it. If there are no more monsters,
+call endGame(). 
+2. Make sure that endGame() still gets called if the wizard
+is killed.
 */
 
 function getNewMonster() {
@@ -25,10 +22,19 @@ function attack() {
     monster.getDiceHtml()
     wizard.takeDamage(monster.currentDiceScore)
     monster.takeDamage(wizard.currentDiceScore)
-    if ( monster.dead || wizard.dead ) {
+    render()
+
+    if ( wizard.dead ) {
         endGame()
+    } else if ( monster.dead ){
+        if ( monstersArray.length > 0 ){
+            monster = getNewMonster()
+            render()
+        }
+        else {
+            endGame()
+        }
     }
-   render()
 }
 
 function endGame() {
