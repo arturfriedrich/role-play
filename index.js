@@ -4,14 +4,6 @@ import Character from "./Character.js"
 let monstersArray = ["orc", "demon", "goblin"]
 let isWaiting = false
 
-/*
-Challenge
-1. Disable the user's ability to attack when a monster dies.
-2. Reneable the user's ability to attack when a new monster
-loads.
-3. When the game is over, disable the user's ability to attack.
-**hint.md for help!!**
-*/
 
 function getNewMonster() {
     const nextMonsterData = characterData[monstersArray.shift()]
@@ -46,7 +38,7 @@ function attack() {
 
 function endGame() {
     isWaiting = true
-   const endMessage = monster.dead && wizard.dead ? "No victors - all creatures are dead" 
+    const endMessage = monster.dead && wizard.dead ? "No victors - all creatures are dead" 
         : wizard.health > 0 ? "The Wizard Wins"
         : "The Monsters are Victorious"
     

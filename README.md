@@ -1,4 +1,12 @@
-# title(){return this.options.title||this.options.name}
+# Role-Playing Game
+
+What I learned during this project:
+- .reduce() method
+- ternary operator
+- arrow functions
+- setTimeout() method
+- constructor functions
+- Import / Export
 
 ## Supporting Scrimba
 
