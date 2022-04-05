@@ -20,8 +20,8 @@ function getNewMonster() {
 
 function attack() {
     if ( !isWaiting ) {
-        wizard.getDiceHtml()
-        monster.getDiceHtml()
+        wizard.setDiceHtml()
+        monster.setDiceHtml()
         wizard.takeDamage(monster.currentDiceScore)
         monster.takeDamage(wizard.currentDiceScore)
         render()
@@ -48,7 +48,7 @@ function endGame() {
     isWaiting = true
    const endMessage = monster.dead && wizard.dead ? "No victors - all creatures are dead" 
         : wizard.health > 0 ? "The Wizard Wins"
-        : "The Orc is Victorious"
+        : "The Monsters are Victorious"
     
     const endEmoji = wizard.health > 0 ? "🔮" : "☠️"
 
@@ -65,8 +65,8 @@ function endGame() {
 
 
 function render() {
-    document.getElementById("hero").innerHTML = wizard.getCharacterHtml();
-    document.getElementById("monster").innerHTML = monster.getCharacterHtml();
+    document.getElementById("hero").innerHTML = wizard.getCharacterHtml()
+    document.getElementById("monster").innerHTML = monster.getCharacterHtml()
 }
 
 document.getElementById("attack-button").addEventListener("click", attack)
